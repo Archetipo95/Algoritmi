@@ -17,8 +17,8 @@ Una raccolta degli algoritmi in pseudo python (NB array partono da 1)
 ```python
 insertionSort(A[])
 	for i=2 to n	# il primo elemento è già ordinato
-		key = A[i]  # A[1..i-1] ordinato
-		z = i-1
+		key = A[i]  # numero da "ordinare"
+		z = i-1     # A[1..i-1] ordinato, i-1 indice ultimo numero ordinato
 		while z>0 and A[z]>key
 			A[z+1] = A[z]
 			z = z-1
@@ -47,5 +47,5 @@ Il **while** termina se:
 
 # Credits
 
-* [Vashy](https://github.com/Vashy)'s [ASD-Notes](https://github.com/Vashy/ASD-Notes) repository
-* [Wikipedia](https://en.wikipedia.org)
+* [Vashy](https://github.com/Vashy "Link to Vashy's GitHub profile")'s [ASD-Notes](https://github.com/Vashy/ASD-Notes "Link to ASD-Notes") repository
+* [Wikipedia](https://en.wikipedia.org "Wikipedia")
