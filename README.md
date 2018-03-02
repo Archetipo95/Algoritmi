@@ -24,7 +24,9 @@ insertionSort(A[])
 			j = j-1
 		A[j+1] = key
 ```
-Il **while** termina se
+
+Il **while** termina se:
+
 	1. j=0 -> tutti gli elementi prima di i sono maggiori di key -> key va al primo posto A[1]
 	2. j>0 AND A[j]<=key -> A[j+1]=key
 	
