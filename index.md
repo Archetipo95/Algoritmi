@@ -44,8 +44,8 @@ Il **while** termina se:
 
 ### Costi
 
-- Avg: O(n^2)
-- Worst: A ordinato in modo inverso -> O(n^2)
+- Avg: O(n^2^)
+- Worst: A ordinato in modo inverso -> O(n^2^)
 - Best: A ordinato -> O(n)
 
 ![Alt Animated GIF of the insertion sort](https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif)
