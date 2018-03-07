@@ -5,7 +5,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
       
       
       
@@ -213,31 +213,48 @@ code.language-yaml {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="algoritmi">Algoritmi</h1>
+      <h1 class="mume-header undefined" id="algoritmi">Algoritmi</h1>
 
-<p>Una raccolta degli algoritmi in pseudo python (NB array partono da 1)</p>
-<p><a href="https://opensource.org/licenses/Apache-2.0"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" alt="Open Source Love"></a> <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a></p>
-<h2 class="mume-header" id="indice">Indice</h2>
+<p>Una raccolta degli algoritmi in pseudo python (NB array partono da 1)<br>
+Ho cambiato nome alla variabili per rendere il codice più leggibile evitando di usare lettere che si assomigliano (p,q,b,d,i,j)</p>
+<h2 class="mume-header undefined" id="indice">Indice</h2>
 
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<li><a href="#insertion-sort">Insertion Sort</a>
 <ul>
-<li><a href="#insertion-sort">Insertion Sort</a></li>
-<li><a href="#merge-sort">Merge Sort</a></li>
+<li><a href="#codice">Codice</a></li>
+<li><a href="#invarianti-e-corretteza">Invarianti e corretteza</a></li>
+<li><a href="#costi">Costi</a></li>
+</ul>
+</li>
+<li><a href="#merge-sort">Merge Sort</a>
+<ul>
+<li><a href="#codice-mergesort">Codice mergeSort</a></li>
+<li><a href="#invarianti-e-corretteza-mergesort">Invarianti e corretteza mergesort</a></li>
+<li><a href="#codice-merge">Codice merge</a></li>
+<li><a href="#invarianti-e-corretteza-merge">Invarianti e corretteza merge</a></li>
+<li><a href="#costi-1">Costi</a></li>
+</ul>
+</li>
 <li><a href="#credits">Credits</a></li>
 </ul>
 <h2 class="mume-header" id="insertion-sort">Insertion Sort</h2>
 
-<p>incrementale</p>
+<p><a href="https://en.wikipedia.org/wiki/Insertion_sort" title="Insertion Sort link to Wikipedia">Link Wikipedia</a></p>
+<p>Tipo di algoritmo: incrementale</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif" alt="Alt Animated GIF of the insertion sort"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" alt="Alt Graphical example of the insertion sort"></p>
+<h3 class="mume-header" id="codice">Codice</h3>
+
 <p><code>Input: A[1,...,n]</code></p>
-<pre class="language-python {.line-numbers} line-numbers">insertionSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">insertionSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">2</span> to n      <span class="token comment" spellcheck="true"># il primo elemento è già ordinato</span>
         key <span class="token operator">=</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># numero da "ordinare"</span>
         z <span class="token operator">=</span> i<span class="token number">-1</span>       <span class="token comment" spellcheck="true"># A[1..i-1] ordinato, i-1 indice ultimo numero ordinato</span>
         <span class="token keyword">while</span> z<span class="token operator">></span><span class="token number">0</span> <span class="token operator">and</span> A<span class="token punctuation">[</span>z<span class="token punctuation">]</span><span class="token operator">></span>key
-            A<span class="token punctuation">[</span>z<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>z<span class="token punctuation">]</span>
+            A<span class="token punctuation">[</span>z<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>z<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># key è più piccolo quindi salvo A[z] in una posizione avanti</span>
             z<span class="token operator">-</span><span class="token operator">-</span>
         A<span class="token punctuation">[</span>z<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> key
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
-<p><code>Output: A[1,...,n] ordinato</code></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p><code>Output: A[1,...,n] ordinato</code></p>
 <p>Il <strong>while</strong> termina se:</p>
 <ol>
 <li><code>z = 0</code> -&gt; tutti gli elementi prima di <strong>i</strong> sono maggiori di <strong>key</strong> -&gt; <strong>key</strong> va al primo posto <code>A[1]</code></li>
@@ -262,13 +279,12 @@ In uscita abbiamo:
 <li>Worst: A ordinato in modo inverso -&gt; O(n<sup>2</sup>)</li>
 <li>Best: A ordinato -&gt; O(n)</li>
 </ul>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif" alt="Alt Animated GIF of the insertion sort"><br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" alt="Alt Graphical example of the insertion sort"></p>
-<p><a href="https://en.wikipedia.org/wiki/Insertion_sort" title="Insertion Sort link to Wikipedia">Wikipedia Link</a></p>
 <h2 class="mume-header" id="merge-sort">Merge Sort</h2>
 
-<p>Dividi et Impera</p>
-<h3 class="mume-header" id="legenda-del-codice">Legenda del codice</h3>
+<p><a href="https://en.wikipedia.org/wiki/Merge_sort" title="Merge Sort link to Wikipedia">Wikipedia Link</a></p>
+<p>Tipo di algoritmo: dividi et impera</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Merge_sort_animation2.gif" alt="Alt Animated GIF of the merge sort"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="Alt Graphical example of the merge sort"></p>
+<h3 class="mume-header" id="codice-mergesort">Codice mergeSort</h3>
 
 <ul>
 <li><code>A[i..n]</code> array di partenza con indice di scorrimento <strong>k</strong></li>
@@ -279,15 +295,14 @@ In uscita abbiamo:
 <li><strong>n2</strong> lunghezza parte destra del sottoarray <strong>R</strong> con indice di scorrimento <strong>z</strong></li>
 </ul>
 <p><code>Input: A[1,...,n],subAi,subAf</code></p>
-<pre class="language-python {.line-numbers} line-numbers">mergeSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">mergeSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>subAi<span class="token operator">&lt;</span>subAf<span class="token punctuation">)</span>               <span class="token comment" spellcheck="true"># ci sono almeno 2 elementi?</span>
         subH <span class="token operator">=</span> <span class="token punctuation">(</span>subAi<span class="token operator">+</span>subAf<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span>    <span class="token comment" spellcheck="true"># intero più piccolo</span>
         mergeSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subH<span class="token punctuation">)</span>
         mergeSort<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subH<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
         merge<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subH<span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
-<p><code>Output: A[1,...,n] ordinato</code></p>
-<h3 class="mume-header" id="invarianti-e-corretteza-mergesortasubaisubaf">Invarianti e corretteza mergeSort(A,subAi,subAf)</h3>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p><code>Output: A[1,...,n] ordinato</code></p>
+<h3 class="mume-header" id="invarianti-e-corretteza-mergesort">Invarianti e corretteza mergesort</h3>
 
 <ul>
 <li>per induzione su <code>subAf-subAi</code> (sottoarray di <strong>A</strong>)</li>
@@ -305,8 +320,10 @@ In uscita abbiamo:
 <li>ordinamento su <strong>R</strong> <code>mergesort(A,subH+1,subAf)</code></li>
 <li>per correttezza di merge -&gt; dopo merge <code>A[subAi..subAf]</code> ordinato</li>
 </ol>
+<h3 class="mume-header" id="codice-merge">Codice merge</h3>
+
 <p><code>Input: A[subAi...subH...subAf]</code></p>
-<pre class="language-python {.line-numbers} line-numbers">merge<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subH<span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">merge<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>subAi<span class="token punctuation">,</span>subH<span class="token punctuation">,</span>subAf<span class="token punctuation">)</span>
     n1 <span class="token operator">=</span> subH<span class="token operator">-</span>subAi<span class="token operator">+</span><span class="token number">1</span>           <span class="token comment" spellcheck="true"># +1 perché contiamo da 1</span>
     n2 <span class="token operator">=</span> subAf<span class="token operator">-</span>subH
     <span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">1</span> to n1
@@ -322,9 +339,8 @@ In uscita abbiamo:
                 <span class="token keyword">else</span> <span class="token comment" spellcheck="true"># se L[i] > R[z]</span>
                     A<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>z<span class="token punctuation">]</span>
                     z<span class="token operator">+</span><span class="token operator">+</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
-<p><code>Output: A[subAi,...,subAf] ordinato</code></p>
-<h3 class="mume-header" id="invarianti-e-corretteza-mergeasubaisubhsubaf">Invarianti e corretteza merge(A,subAi,subH,subAf)</h3>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p><code>Output: A[subAi,...,subAf] ordinato</code></p>
+<h3 class="mume-header" id="invarianti-e-corretteza-merge">Invarianti e corretteza merge</h3>
 
 <ul>
 <li><strong>L</strong> da 1 a <strong>n1</strong> (infinito) <code>A[subAi..subH]</code></li>
@@ -342,38 +358,34 @@ In uscita abbiamo:
 <li>Worst: A ordinato in modo inverso -&gt;</li>
 <li>Best: A ordinato -&gt;</li>
 </ul>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Merge_sort_animation2.gif" alt="Alt Animated GIF of the merge sort"><br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="Alt Graphical example of the merge sort"></p>
-<p><a href="https://en.wikipedia.org/wiki/Merge_sort" title="Merge Sort link to Wikipedia">Wikipedia Link</a></p>
 <h2 class="mume-header" id="credits">Credits</h2>
 
 <ul>
 <li><a href="https://github.com/Vashy" title="Link to Vashy&apos;s GitHub profile">Vashy</a>'s <a href="https://github.com/Vashy/ASD-Notes" title="Link to ASD-Notes">ASD-Notes</a> repository</li>
 <li><a href="https://en.wikipedia.org" title="Wikipedia">Wikipedia</a></li>
+<li><a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/" title="Markdown Preview Enhanced">MPE</a></li>
+<li><a href="https://github.com/Archetipo95/Algoritmi">Repository link</a></li>
 </ul>
 
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#algoritmi">Algoritmi</a>
-<ul>
-<li><a href="#indice">Indice</a></li>
 <li><a href="#insertion-sort">Insertion Sort</a>
 <ul>
+<li><a href="#codice">Codice</a></li>
 <li><a href="#invarianti-e-corretteza">Invarianti e corretteza</a></li>
 <li><a href="#costi">Costi</a></li>
 </ul>
 </li>
 <li><a href="#merge-sort">Merge Sort</a>
 <ul>
-<li><a href="#legenda-del-codice">Legenda del codice</a></li>
-<li><a href="#invarianti-e-corretteza-mergesortasubaisubaf">Invarianti e corretteza mergeSort(A,subAi,subAf)</a></li>
-<li><a href="#invarianti-e-corretteza-mergeasubaisubhsubaf">Invarianti e corretteza merge(A,subAi,subH,subAf)</a></li>
+<li><a href="#codice-mergesort">Codice mergeSort</a></li>
+<li><a href="#invarianti-e-corretteza-mergesort">Invarianti e corretteza mergesort</a></li>
+<li><a href="#codice-merge">Codice merge</a></li>
+<li><a href="#invarianti-e-corretteza-merge">Invarianti e corretteza merge</a></li>
 <li><a href="#costi-1">Costi</a></li>
 </ul>
 </li>
 <li><a href="#credits">Credits</a></li>
-</ul>
-</li>
 </ul>
 </div>
       <a id="sidebar-toc-btn">≡</a>
