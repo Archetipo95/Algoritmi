@@ -257,8 +257,8 @@ Ho cambiato nome alla variabili per rendere il codice più leggibile evitando di
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p><code>Output: A[1,...,n] ordinato</code></p>
 <p>Il <strong>while</strong> termina se:</p>
 <ol>
-<li><code>z = 0</code> -&gt; tutti gli elementi prima di <strong>i</strong> sono maggiori di <strong>key</strong> -&gt; <strong>key</strong> va al primo posto <code>A[1]</code></li>
-<li><code>z &gt; 0 AND A[z] &lt;= key</code> -&gt; <code>A[z+1] = key</code></li>
+<li><code>z = 0</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> tutti gli elementi prima di <strong>i</strong> sono maggiori di <strong>key</strong> -&gt; <strong>key</strong> va al primo posto <code>A[1]</code></li>
+<li><code>z &gt; 0 AND A[z] &lt;= key</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> <code>A[z+1] = key</code></li>
 </ol>
 <h3 class="mume-header" id="invarianti-e-corretteza">Invarianti e corretteza</h3>
 
@@ -276,8 +276,8 @@ In uscita abbiamo:
 
 <ul>
 <li>Avg: O(n<sup>2</sup>)</li>
-<li>Worst: A ordinato in modo inverso -&gt; O(n<sup>2</sup>)</li>
-<li>Best: A ordinato -&gt; O(n)</li>
+<li>Worst: <code>A[]</code> ordinato in modo inverso <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> O(n<sup>2</sup>)</li>
+<li>Best: <code>A[]</code> ordinato <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> O(n)</li>
 </ul>
 <h2 class="mume-header" id="merge-sort">Merge Sort</h2>
 
@@ -305,20 +305,19 @@ In uscita abbiamo:
 <h3 class="mume-header" id="invarianti-e-corretteza-mergesort">Invarianti e corretteza mergesort</h3>
 
 <ul>
-<li>per induzione su <code>subAf-subAi</code> (sottoarray di <strong>A</strong>)</li>
-</ul>
+<li>Per induzione sul sottoarray di <strong>A</strong> (<code>subAf-subAi</code>)
 <ol>
-<li>se 0 al più un elemento -&gt; OK</li>
-<li>se <code>subAf-subAi</code>&gt;0 -&gt; <code>subH-subAi</code>,<code>subAf-subH+1 &lt; subAf-subAi</code></li>
+<li>se <code>subAf-subAi</code> == 0 or (-1) al più un elemento <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> già ordinato</li>
+<li>se <code>subAf-subAi</code> &gt; 0 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> <code>subH-subAi</code>,<code>subAf-subH+1 &lt; subAf-subAi</code></li>
 </ol>
-<ul>
+</li>
 <li>per ipotesi induttiva</li>
 </ul>
 <ol>
 <li>stato iniziale disordinato</li>
 <li>ordinamento su <strong>L</strong> <code>mergesort(A,subAi,sub)</code></li>
 <li>ordinamento su <strong>R</strong> <code>mergesort(A,subH+1,subAf)</code></li>
-<li>per correttezza di merge -&gt; dopo merge <code>A[subAi..subAf]</code> ordinato</li>
+<li>per correttezza di merge <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span> dopo merge <code>A[subAi..subAf]</code> ordinato</li>
 </ol>
 <h3 class="mume-header" id="codice-merge">Codice merge</h3>
 
@@ -330,7 +329,7 @@ In uscita abbiamo:
         L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>subAi<span class="token operator">+</span>i<span class="token number">-1</span><span class="token punctuation">]</span>
         <span class="token keyword">for</span> z<span class="token operator">=</span><span class="token number">1</span> to n2
             R<span class="token punctuation">[</span>z<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span>subAi<span class="token operator">+</span>z<span class="token punctuation">]</span>
-            L<span class="token punctuation">[</span>n1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>n2<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"infinito"</span>
+            L<span class="token punctuation">[</span>n1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>n2<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"infinito"</span> <span class="token comment" spellcheck="true"># molti elementi</span>
             i <span class="token operator">=</span> z <span class="token operator">=</span> <span class="token number">1</span>
             <span class="token keyword">for</span> k<span class="token operator">=</span>subAi to subAf
                 <span class="token keyword">if</span><span class="token punctuation">(</span>L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;=</span> R<span class="token punctuation">[</span>z<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># se uguali prendo prima quello a sinistra</span>
@@ -343,20 +342,21 @@ In uscita abbiamo:
 <h3 class="mume-header" id="invarianti-e-corretteza-merge">Invarianti e corretteza merge</h3>
 
 <ul>
-<li><strong>L</strong> da 1 a <strong>n1</strong> (infinito) <code>A[subAi..subH]</code></li>
-<li><strong>R</strong> da 1 a <strong>n2</strong> (infinito) <code>A[subH+1..subAf]</code></li>
+<li><strong>L</strong> contiene da 1 a <strong>n1</strong> elementi in <code>A[subAi..subH]</code></li>
+<li><strong>R</strong> contiene da 1 a <strong>n2</strong> elementi in <code>A[subH+1..subAf]</code></li>
 </ul>
+<p>Sottoarray <code>A[subAi..k-1]</code>:</p>
 <ol>
-<li><code>A[subAi..k-1]</code> ordinata</li>
-<li>contiene <code>L[1..i-1]</code> e <code>R[1..z-1]</code></li>
-<li><code>A[subAi..k-1] &lt;= L[i..n1],R[z..n2]</code></li>
+<li>Ordinato</li>
+<li>Contiene <code>L[1..i-1]</code> e <code>R[1..z-1]</code></li>
+<li>È minore o uguale a <code>L[i..n1]</code> e <code>R[z..n2]</code></li>
 </ol>
 <h3 class="mume-header" id="costi-1">Costi</h3>
 
 <ul>
 <li>Avg:</li>
-<li>Worst: A ordinato in modo inverso -&gt;</li>
-<li>Best: A ordinato -&gt;</li>
+<li>Worst: <code>A[]</code> ordinato in modo inverso <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span></li>
+<li>Best: <code>A[]</code> ordinato <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">=&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="base"><span class="mrel">=</span><span class="mrel">&gt;</span></span></span></span></li>
 </ul>
 <h2 class="mume-header" id="credits">Credits</h2>
 

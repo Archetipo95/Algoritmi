@@ -50,8 +50,8 @@ insertionSort(A[])
 
 Il **while** termina se:
 
-1. `z = 0` -> tutti gli elementi prima di **i** sono maggiori di **key** -> **key** va al primo posto `A[1]`
-2. `z > 0 AND A[z] <= key` -> `A[z+1] = key`
+1. `z = 0` $=>$ tutti gli elementi prima di **i** sono maggiori di **key** -> **key** va al primo posto `A[1]`
+2. `z > 0 AND A[z] <= key` $=>$ `A[z+1] = key`
 
 ### Invarianti e corretteza
 
@@ -63,9 +63,9 @@ Il **while** termina se:
 
 ### Costi
 
-- Avg: O(n^2^)
-- Worst: A ordinato in modo inverso -> O(n^2^)
-- Best: A ordinato -> O(n)
+* Avg: O(n^2^)
+* Worst: `A[]` ordinato in modo inverso $=>$ O(n^2^)
+* Best: `A[]` ordinato $=>$ O(n)
 
 ## Merge Sort
 
@@ -99,14 +99,14 @@ mergeSort(A[],subAi,subAf)
 
 ### Invarianti e corretteza mergesort
 
-- per induzione su `subAf-subAi` (sottoarray di **A**)
- 1. se 0 al più un elemento -> OK
- 2. se `subAf-subAi`>0 -> `subH-subAi`,`subAf-subH+1 < subAf-subAi`
-- per ipotesi induttiva
+* Per induzione sul sottoarray di **A** (`subAf-subAi`)
+  1. se `subAf-subAi` == 0 or (-1) al più un elemento $=>$ già ordinato
+  2. se `subAf-subAi` > 0 $=>$ `subH-subAi`,`subAf-subH+1 < subAf-subAi`
+* per ipotesi induttiva
  1. stato iniziale disordinato
  2. ordinamento su **L** `mergesort(A,subAi,sub)`
  3. ordinamento su **R** `mergesort(A,subH+1,subAf)`
- 4. per correttezza di merge -> dopo merge `A[subAi..subAf]` ordinato
+ 4. per correttezza di merge $=>$ dopo merge `A[subAi..subAf]` ordinato
 
 ### Codice merge
 
@@ -120,7 +120,7 @@ merge(A[],subAi,subH,subAf)
         L[i] = A[subAi+i-1]
         for z=1 to n2
             R[z] = A[subAi+z]
-            L[n1+1] = R[n2+1] = "infinito"
+            L[n1+1] = R[n2+1] = "infinito" # molti elementi
             i = z = 1
             for k=subAi to subAf
                 if(L[i]<= R[z]) # se uguali prendo prima quello a sinistra
@@ -135,18 +135,20 @@ merge(A[],subAi,subH,subAf)
 
 ### Invarianti e corretteza merge
 
-- **L** da 1 a **n1** (infinito) `A[subAi..subH]`
-- **R** da 1 a **n2** (infinito) `A[subH+1..subAf]`
+* **L** contiene da 1 a **n1** elementi in `A[subAi..subH]`
+* **R** contiene da 1 a **n2** elementi in `A[subH+1..subAf]`
 
- 1. `A[subAi..k-1]` ordinata
- 2. contiene `L[1..i-1]` e `R[1..z-1]`
- 3. `A[subAi..k-1] <= L[i..n1],R[z..n2]`
+Sottoarray `A[subAi..k-1]`:
+
+ 1. Ordinato
+ 2. Contiene `L[1..i-1]` e `R[1..z-1]`
+ 3. È minore o uguale a `L[i..n1]` e `R[z..n2]`
 
 ### Costi
 
-- Avg:
-- Worst: A ordinato in modo inverso ->
-- Best: A ordinato ->
+* Avg:
+* Worst: `A[]` ordinato in modo inverso $=>$
+* Best: `A[]` ordinato $=>$
 
 ## Credits
 
