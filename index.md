@@ -1,18 +1,37 @@
-# Algoritmi
+# Algoritmi {ignore=true}
 
 Una raccolta degli algoritmi in pseudo python (NB array partono da 1)
+Ho cambiato nome alla variabili per rendere il codice più leggibile evitando di usare lettere che si assomigliano (p,q,b,d,i,j)
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/licenses/Apache-2.0) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+## Indice {ignore=true}
 
-## Indice
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-- [Insertion Sort](#insertion-sort)
-- [Merge Sort](#merge-sort)
-- [Credits](#credits)
+<!-- code_chunk_output -->
+
+* [Insertion Sort](#insertion-sort)
+	* [Codice](#codice)
+	* [Invarianti e corretteza](#invarianti-e-corretteza)
+	* [Costi](#costi)
+* [Merge Sort](#merge-sort)
+	* [Codice mergeSort](#codice-mergesort)
+	* [Invarianti e corretteza mergesort](#invarianti-e-corretteza-mergesort)
+	* [Codice merge](#codice-merge)
+	* [Invarianti e corretteza merge](#invarianti-e-corretteza-merge)
+	* [Costi](#costi-1)
+* [Credits](#credits)
+
+<!-- /code_chunk_output -->
 
 ## Insertion Sort
 
-incrementale
+[Link Wikipedia](https://en.wikipedia.org/wiki/Insertion_sort "Insertion Sort link to Wikipedia")
+
+Tipo di algoritmo: incrementale
+
+![Alt Animated GIF of the insertion sort](https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif)![Alt Graphical example of the insertion sort](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
+### Codice
 
 `Input: A[1,...,n]`
 
@@ -22,7 +41,7 @@ insertionSort(A[])
         key = A[i]    # numero da "ordinare"
         z = i-1       # A[1..i-1] ordinato, i-1 indice ultimo numero ordinato
         while z>0 and A[z]>key
-            A[z+1] = A[z]
+            A[z+1] = A[z]  # key è più piccolo quindi salvo A[z] in una posizione avanti
             z--
         A[z+1] = key
 ```
@@ -36,11 +55,11 @@ Il **while** termina se:
 
 ### Invarianti e corretteza
 
-- **for** `A[1. .i-1]` è ordinato e contiene gli elementi in `(1,i-1)` iniziali
-- **while** `A[1. .z]A[z+2. .i]` ordinato e `A[z+2. .i] > key`</br>
+* **for** `A[1. .i-1]` è ordinato e contiene gli elementi in `(1,i-1)` iniziali
+* **while** `A[1. .z]A[z+2. .i]` ordinato e `A[z+2. .i] > key`</br>
  In uscita abbiamo:
-  - `i = n+1`;
-  - `A[1. .n]` ordinato, come da invariante: vale `A[1. .i-1]` ordinato, e **i** vale `n+1`
+  * `i = n+1`;
+  * `A[1. .n]` ordinato, come da invariante: vale `A[1. .i-1]` ordinato, e **i** vale `n+1`
 
 ### Costi
 
@@ -48,16 +67,15 @@ Il **while** termina se:
 - Worst: A ordinato in modo inverso -> O(n^2^)
 - Best: A ordinato -> O(n)
 
-![Alt Animated GIF of the insertion sort](https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif)
-![Alt Graphical example of the insertion sort](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
-
-[Wikipedia Link](https://en.wikipedia.org/wiki/Insertion_sort "Insertion Sort link to Wikipedia")
-
 ## Merge Sort
 
-Dividi et Impera
+[Wikipedia Link](https://en.wikipedia.org/wiki/Merge_sort "Merge Sort link to Wikipedia")
 
-### Legenda del codice
+Tipo di algoritmo: dividi et impera
+
+![Alt Animated GIF of the merge sort](https://upload.wikimedia.org/wikipedia/commons/c/c5/Merge_sort_animation2.gif)![Alt Graphical example of the merge sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
+
+### Codice mergeSort
 
 - `A[i..n]` array di partenza con indice di scorrimento **k**
 - **subAi**  indice inizio sottoarray di **A**
@@ -79,7 +97,7 @@ mergeSort(A[],subAi,subAf)
 
 `Output: A[1,...,n] ordinato`
 
-### Invarianti e corretteza mergeSort(A,subAi,subAf)
+### Invarianti e corretteza mergesort
 
 - per induzione su `subAf-subAi` (sottoarray di **A**)
  1. se 0 al più un elemento -> OK
@@ -89,6 +107,8 @@ mergeSort(A[],subAi,subAf)
  2. ordinamento su **L** `mergesort(A,subAi,sub)`
  3. ordinamento su **R** `mergesort(A,subH+1,subAf)`
  4. per correttezza di merge -> dopo merge `A[subAi..subAf]` ordinato
+
+### Codice merge
 
 `Input: A[subAi...subH...subAf]`
 
@@ -113,7 +133,7 @@ merge(A[],subAi,subH,subAf)
 
 `Output: A[subAi,...,subAf] ordinato`
 
-### Invarianti e corretteza merge(A,subAi,subH,subAf)
+### Invarianti e corretteza merge
 
 - **L** da 1 a **n1** (infinito) `A[subAi..subH]`
 - **R** da 1 a **n2** (infinito) `A[subH+1..subAf]`
@@ -128,12 +148,9 @@ merge(A[],subAi,subH,subAf)
 - Worst: A ordinato in modo inverso ->
 - Best: A ordinato ->
 
-![Alt Animated GIF of the merge sort](https://upload.wikimedia.org/wikipedia/commons/c/c5/Merge_sort_animation2.gif)
-![Alt Graphical example of the merge sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
-
-[Wikipedia Link](https://en.wikipedia.org/wiki/Merge_sort "Merge Sort link to Wikipedia")
-
 ## Credits
 
-- [Vashy](https://github.com/Vashy "Link to Vashy's GitHub profile")'s [ASD-Notes](https://github.com/Vashy/ASD-Notes "Link to ASD-Notes") repository
-- [Wikipedia](https://en.wikipedia.org "Wikipedia")
+* [Vashy](https://github.com/Vashy "Link to Vashy's GitHub profile")'s [ASD-Notes](https://github.com/Vashy/ASD-Notes "Link to ASD-Notes") repository
+* [Wikipedia](https://en.wikipedia.org "Wikipedia")
+* [MPE](https://shd101wyy.github.io/markdown-preview-enhanced/#/ "Markdown Preview Enhanced")
+* [Repository link](https://github.com/Archetipo95/Algoritmi)
