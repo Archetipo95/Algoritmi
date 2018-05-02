@@ -77,12 +77,12 @@ Tipo di algoritmo: dividi et impera
 
 ### Codice mergeSort
 
-- `A[i..n]` array di partenza con indice di scorrimento **k**
-- **subAi**  indice inizio sottoarray di **A**
-- **subAf** indice di fine sottoarray di **A**
-- **subH** indice posizione centrale sottoarray di **A** (half)
-- **n1** lunghezza parte di sinistra del sottoarray **L** con indice di scorrimento **i**
-- **n2** lunghezza parte destra del sottoarray **R** con indice di scorrimento **z**
+* `A[i..n]` array di partenza con indice di scorrimento **k**
+* **subAi**  indice inizio sottoarray di **A**
+* **subAf** indice di fine sottoarray di **A**
+* **subH** indice posizione centrale sottoarray di **A** (half)
+* **n1** lunghezza parte di sinistra del sottoarray **L** con indice di scorrimento **i**
+* **n2** lunghezza parte destra del sottoarray **R** con indice di scorrimento **z**
 
 `Input: A[1,...,n],subAi,subAf`
 
@@ -99,14 +99,16 @@ mergeSort(A[],subAi,subAf)
 
 ### Invarianti e corretteza mergesort
 
-* Per induzione sul sottoarray di **A** (`subAf-subAi`)
-  1. se `subAf-subAi` == 0 or (-1) al più un elemento $=>$ già ordinato
+Per induzione sul sottoarray di **A** (`subAf-subAi`)
+
+* Caso base:
+  1. se `subAf-subAi` == 0 al più un elemento $=>$ già ordinato
   2. se `subAf-subAi` > 0 $=>$ `subH-subAi`,`subAf-subH+1 < subAf-subAi`
-* per ipotesi induttiva
- 1. stato iniziale disordinato
- 2. ordinamento su **L** `mergesort(A,subAi,sub)`
- 3. ordinamento su **R** `mergesort(A,subH+1,subAf)`
- 4. per correttezza di merge $=>$ dopo merge `A[subAi..subAf]` ordinato
+* Caso induttivo:
+  1. stato iniziale disordinato
+  2. ordinamento su **L** `mergesort(A,subAi,sub)`
+  3. ordinamento su **R** `mergesort(A,subH+1,subAf)`
+  4. per correttezza di merge $=>$ dopo merge `A[subAi..subAf]` ordinato
 
 ### Codice merge
 
